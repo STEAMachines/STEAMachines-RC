@@ -12,7 +12,7 @@ public class AutoDrive1_Apriltag extends LinearOpMode {
     private DcMotor leftDrive;
     private DcMotor rightDrive;
     private DcMotor shootMotors;
-    AprilTagProcessor aprilTagProcessor;
+    AprilTagProcessor aprilTag;
 
     public void runOpMode() {
         leftDrive = hardwareMap.get(DcMotor.class, "leftDrive");
@@ -25,7 +25,8 @@ public class AutoDrive1_Apriltag extends LinearOpMode {
         autoDrive();
     }
     public void initializeAprilTag() {
-
+        aprilTag = new AprilTagProcessor.Builder().build();
+        aprilTag.setDecimation(2);
     }
     public void autoDrive() {
         leftDrive.setPower(0.5);
