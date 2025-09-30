@@ -26,7 +26,7 @@ public class AutoDrive1_Apriltag extends LinearOpMode {
     }
     public void initializeAprilTag() {
         aprilTag = new AprilTagProcessor.Builder().build();
-        aprilTag.setDecimation(2);
+        aprilTag.setDecimation(3);
     }
     public void autoDrive() {
         leftDrive.setPower(0.5);
