@@ -3,7 +3,8 @@ package org.firstinspires.ftc.teamcode.Strategy1_AprilTag;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
+
+import org.firstinspires.ftc.vision.apriltag.AprilTagProcessor;
 
 
 @Autonomous(name="AutoDrive1_AprilTag", group="STEAMachines_DECODE")
@@ -11,12 +12,13 @@ public class AutoDrive1_Apriltag extends LinearOpMode {
     private DcMotor leftDrive;
     private DcMotor rightDrive;
     private DcMotor shootMotors;
+    AprilTagProcessor aprilTagProcessor;
 
     public void runOpMode() {
         leftDrive = hardwareMap.get(DcMotor.class, "leftDrive");
         rightDrive = hardwareMap.get(DcMotor.class, "rightDrive");
         shootMotors = hardwareMap.get(DcMotor.class, "shootWheel");
-        leftDrive.setDirection(DcMotorSimple.Direction.REVERSE);
+        leftDrive.setDirection(DcMotor.Direction.REVERSE);
         boolean isShooting = false;
         initializeAprilTag();
         waitForStart();

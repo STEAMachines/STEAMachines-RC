@@ -12,7 +12,7 @@ public class Autonomous3_DECODE_MeepMeep {
         RoadRunnerBotEntity STEAMachines_bot = new DefaultBotBuilder(meepMeep)
                 .setConstraints(60,60, Math.toRadians(180), Math.toRadians(180), 15)
                 .build();
-        STEAMachines_bot.runAction(STEAMachines_bot.getDrive().actionBuilder(new Pose2d(-52,52, -Math.PI/4))
+        STEAMachines_bot.runAction(STEAMachines_bot.getDrive().actionBuilder(new Pose2d(-48,48, -Math.PI/4))
                 .strafeTo(new Vector2d(-20, 20))
                 .turn(Math.toRadians(180))
                 .waitSeconds(3)

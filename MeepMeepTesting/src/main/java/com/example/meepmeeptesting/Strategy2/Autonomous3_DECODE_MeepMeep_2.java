@@ -13,7 +13,7 @@ public class Autonomous3_DECODE_MeepMeep_2 {
                 .setDimensions(16.5, 17.7)
                 .setConstraints(60, 60, Math.toRadians(180), Math.toRadians(180), 15)
                 .build();
-        STEAMachines_bot.runAction(STEAMachines_bot.getDrive().actionBuilder(new Pose2d(-52, 52, -Math.PI/4))
+        STEAMachines_bot.runAction(STEAMachines_bot.getDrive().actionBuilder(new Pose2d(-48, 48, -Math.PI/4))
                 .strafeTo(new Vector2d(-20, 20))
                 .turn(Math.toRadians(180))
                 .waitSeconds(3)
