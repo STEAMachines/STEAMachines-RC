@@ -1,6 +1,6 @@
-# 15242 - RC
+# STEAMachines#15242 - RobotController
 
-This is the official of the code from 15242 - RC alias STEAMachines Code Repo
+Official code from 15242-RC/STEAMachines-RC, time to time the code will updated.
 
 ## Clone
 1. Clone using <p>git clone https://github.com/ZayyanFTC/15242-RC.git</p>
