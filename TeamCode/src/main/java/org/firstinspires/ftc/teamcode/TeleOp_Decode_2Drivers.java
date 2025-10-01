@@ -9,10 +9,14 @@ import com.qualcomm.robotcore.util.Range;
 public class TeleOp_Decode_2Drivers extends LinearOpMode {
     private DcMotor leftDrive;
     private DcMotor rightDrive;
+    private DcMotor intakeMotors;
+    private DcMotor launcherMotors;
 
     public void runOpMode() {
         leftDrive = hardwareMap.get(DcMotor.class, "leftDrive");
         rightDrive = hardwareMap.get(DcMotor.class, "rightDrive");
+        intakeMotors = hardwareMap.get(DcMotor.class, "intakeMotors");
+        launcherMotors = hardwareMap.get(DcMotor.class, "launcherMotors");
         waitForStart();
         initializeAprilTag();
         while(opModeIsActive()) {

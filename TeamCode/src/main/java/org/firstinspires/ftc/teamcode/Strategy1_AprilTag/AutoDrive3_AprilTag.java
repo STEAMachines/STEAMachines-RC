@@ -22,7 +22,6 @@ public class AutoDrive3_AprilTag extends LinearOpMode {
     final double MAX_AUTO_TURN = 0.5;
     private DcMotor leftDrive;
     private DcMotor rightDrive;
-    private DcMotor shootMotors;
     private static final boolean USE_WEBCAM = true;
     private static final int DESIRED_TAG_ID = 20;
     private AprilTagProcessor aprilTag;
@@ -32,7 +31,6 @@ public class AutoDrive3_AprilTag extends LinearOpMode {
     public void runOpMode() {
         leftDrive = hardwareMap.get(DcMotor.class, "leftDrive");
         rightDrive = hardwareMap.get(DcMotor.class, "rightDrive");
-        shootMotors = hardwareMap.get(DcMotor.class, "shootMotors");
         leftDrive.setDirection(DcMotor.Direction.REVERSE);
         boolean isShooting = false;
         initializeAprilTag();

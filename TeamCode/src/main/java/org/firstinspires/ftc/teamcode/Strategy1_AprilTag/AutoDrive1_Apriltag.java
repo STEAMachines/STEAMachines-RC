@@ -24,7 +24,6 @@ public class AutoDrive1_Apriltag extends LinearOpMode {
 
     private DcMotor leftDrive;
     private DcMotor rightDrive;
-    private DcMotor shootMotors;
     private AprilTagProcessor aprilTag;
     private VisionPortal visionPortal;
     private AprilTagDetection desiredTag;
@@ -34,7 +33,6 @@ public class AutoDrive1_Apriltag extends LinearOpMode {
     public void runOpMode() {
         leftDrive = hardwareMap.get(DcMotor.class, "leftDrive");
         rightDrive = hardwareMap.get(DcMotor.class, "rightDrive");
-        shootMotors = hardwareMap.get(DcMotor.class, "shootWheel");
         leftDrive.setDirection(DcMotor.Direction.REVERSE);
         boolean isShooting = false;
         initializeAprilTag();
