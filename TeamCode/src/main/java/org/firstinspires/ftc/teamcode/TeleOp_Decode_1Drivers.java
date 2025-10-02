@@ -5,12 +5,20 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.Range;
 
+import org.firstinspires.ftc.robotcore.external.hardware.camera.BuiltinCameraDirection;
+import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
+import org.firstinspires.ftc.vision.VisionPortal;
+import org.firstinspires.ftc.vision.apriltag.AprilTagProcessor;
+
 @TeleOp(name="TeleOp-1Drivers_Decode", group="STEAMachines_DECODE")
 public class TeleOp_Decode_1Drivers extends LinearOpMode {
     private DcMotor leftDrive;
     private DcMotor rightDrive;
     private DcMotor intakeMotors;
     private DcMotor launcherMotors;
+    private AprilTagProcessor aprilTag;
+    private VisionPortal visionPortal;
+    private static final boolean USE_WEBCAM = true;
 
     public void runOpMode() {
         leftDrive = hardwareMap.get(DcMotor.class,"leftDrive");
@@ -28,9 +36,39 @@ public class TeleOp_Decode_1Drivers extends LinearOpMode {
             rightPower = Range.clip(drive - turn, -1.0, 1.0);
             leftDrive.setPower(leftPower);
             rightDrive.setPower(rightPower);
+
+            //left_bumper && right_bumper to move......
+            if(gamepad1.left_bumper) {
+                intakeMotors.setPower(1);
+            }
+            else if(gamepad1.right_bumper) {
+                intakeMotors.setPower(-1);
+            }
+            else {
+                intakeMotors.setPower(0);
+            }
+            //left_trigger && right_trigger to move..
+            if(gamepad1.left_trigger == 1.0) {
+                launcherMotors.setPower(1);
+            }
+            else if(gamepad1.right_trigger == 1.0) {
+                launcherMotors.setPower(-1);
+            }
+            else {
+                launcherMotors.setPower(0);
+            }
         }
     }
     public void initializeAprilTag() {
-
+        aprilTag = new AprilTagProcessor.Builder().build();
+        VisionPortal.Builder builder = new VisionPortal.Builder();
+        if(USE_WEBCAM) {
+            builder.setCamera(hardwareMap.get(WebcamName.class, "Webcam 1"));
+        }
+        else {
+            builder.setCamera(BuiltinCameraDirection.BACK);
+        }
+        builder.addProcessor(aprilTag);
+        visionPortal = builder.build();
     }
 }
