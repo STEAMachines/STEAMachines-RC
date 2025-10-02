@@ -27,6 +27,7 @@ public class TeleOp_Decode_2Drivers extends LinearOpMode {
         launcherMotors = hardwareMap.get(DcMotor.class, "launcherMotors");
         waitForStart();
         initializeAprilTag();
+        displayWebcamVision();
         while(opModeIsActive()) {
             double leftPower, rightPower;
             double drive = gamepad1.left_stick_y;
@@ -69,5 +70,8 @@ public class TeleOp_Decode_2Drivers extends LinearOpMode {
         }
         builder.addProcessor(aprilTag);
         visionPortal = builder.build();
+    }
+    public void displayWebcamVision() {
+
     }
 }
