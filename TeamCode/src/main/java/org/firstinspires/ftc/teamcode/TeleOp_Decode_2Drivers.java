@@ -8,7 +8,10 @@ import com.qualcomm.robotcore.util.Range;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.BuiltinCameraDirection;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.vision.VisionPortal;
+import org.firstinspires.ftc.vision.apriltag.AprilTagDetection;
 import org.firstinspires.ftc.vision.apriltag.AprilTagProcessor;
+
+import java.util.List;
 
 @TeleOp(name="TeleOp-2Drivers_Decode", group="STEAMachines_DECODE")
 public class TeleOp_Decode_2Drivers extends LinearOpMode {
@@ -72,6 +75,19 @@ public class TeleOp_Decode_2Drivers extends LinearOpMode {
         visionPortal = builder.build();
     }
     public void displayWebcamVision() {
+        boolean targetFound = true;
+        double drive = 0;
+        double turn = 0;
+        while(opModeIsActive()) {
+            List<AprilTagDetection> currentDetections = aprilTag.getDetections();
+            for(AprilTagDetection detection:currentDetections) {
+                if(detection.metadata != null) {
 
+                }
+                else {
+
+                }
+            }
+        }
     }
 }
