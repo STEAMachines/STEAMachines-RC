@@ -20,8 +20,10 @@ public class TeleOp_Decode_1Drivers extends LinearOpMode {
     private DcMotor intakeMotors;
     private DcMotor launcherMotors;
     private AprilTagProcessor aprilTag;
+    private AprilTagDetection desiredTag;
     private VisionPortal visionPortal;
     private static final boolean USE_WEBCAM = true;
+    private static final int DESIRED_TAG_ID = 20;
 
     public void runOpMode() {
         leftDrive = hardwareMap.get(DcMotor.class,"leftDrive");
@@ -83,10 +85,21 @@ public class TeleOp_Decode_1Drivers extends LinearOpMode {
             List<AprilTagDetection> currentDetections = aprilTag.getDetections();
             for(AprilTagDetection detection:currentDetections) {
                 if (detection.metadata != null) {
+                    if(DESIRED_TAG_ID < 0 || (detection.id == DESIRED_TAG_ID)) {
+                        targetFound = true;
+                        desiredTag = detection;
+                        break;
+                    }
+                    else {
+
+                    }
                 }
                 else {
 
                 }
+                telemetry.addData("ID", detection.id);
+                telemetry.addData("Range", detection.ftcPose.range);
+                telemetry.addData("Bearing", detection.ftcPose.bearing);
             }
         }
     }
