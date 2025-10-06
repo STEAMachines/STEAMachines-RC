@@ -16,6 +16,10 @@ import java.util.List;
 @TeleOp(name="TeleOp-1Drivers_Decode", group="STEAMachines_DECODE")
 public class TeleOp_Decode_1Drivers extends LinearOpMode {
     final double DESIRED_DISTANCE = 12.0;
+    final double SPEED_GAIN = 0.02;
+    final double TURN_GAIN = 0.01;
+    final double MAX_AUTO_SPEED = 1.0;
+    final double MAX_AUTO_TURN = 0.5;
     private DcMotor leftDrive;
     private DcMotor rightDrive;
     private DcMotor intakeMotors;
@@ -105,10 +109,16 @@ public class TeleOp_Decode_1Drivers extends LinearOpMode {
             if(targetFound) {
                 double rangeError = (desiredTag.ftcPose.range - DESIRED_DISTANCE);
                 double headingError = (desiredTag.ftcPose.bearing);
+                drive = Range.clip(rangeError * SPEED_GAIN, -MAX_AUTO_SPEED, MAX_AUTO_SPEED);
+                turn = Range.clip(headingError * TURN_GAIN, -MAX_AUTO_TURN, MAX_AUTO_TURN);
+                telemetry.addData("Found", "ID %d (%s)", desiredTag.id, desiredTag.metadata.name);
+                telemetry.addData("Range",  "%5.1f inches", desiredTag.ftcPose.range);
+                telemetry.addData("Bearing","%3.0f degrees", desiredTag.ftcPose.bearing);
             }
             else {
                 targetFound = false;
             }
+            telemetry.update();
         }
     }
 }
