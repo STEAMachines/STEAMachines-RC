@@ -95,11 +95,11 @@ public class TeleOp_Decode_2Drivers extends LinearOpMode {
                         break;
                     }
                     else {
-
+                        telemetry.addData("Skipping", "Tag ID %d is not desired", detection.id);
                     }
                 }
                 else {
-
+                    telemetry.addData("Unknown", "Tag ID %d is not in TagLibrary", detection.id);
                 }
                 telemetry.addData("ID", detection.id);
                 telemetry.addData("Range", detection.ftcPose.range);
