@@ -11,6 +11,7 @@ public class Autonomous2_DECODE_MeepMeep {
     public static void main(String[] args) {
         MeepMeep meepMeep = new MeepMeep(800);
         RoadRunnerBotEntity STEAMachine_bot = new DefaultBotBuilder(meepMeep)
+                .setDimensions(16.5, 17.7)
                 .setColorScheme(new ColorSchemeBlueDark())
                 .setConstraints(60,60,Math.toRadians(180), Math.toRadians(180), 15)
                 .build();

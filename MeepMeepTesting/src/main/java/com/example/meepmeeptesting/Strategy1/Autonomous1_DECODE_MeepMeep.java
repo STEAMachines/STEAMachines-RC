@@ -10,6 +10,7 @@ public class Autonomous1_DECODE_MeepMeep {
     public static void main(String[] args) {
         MeepMeep meepMeep = new MeepMeep(800);
         RoadRunnerBotEntity STEAMachines_bot = new DefaultBotBuilder(meepMeep)
+                .setDimensions(16.5, 17.7)
                 .setConstraints(60,60,Math.toRadians(180), Math.toRadians(180), 15)
                 .build();
         STEAMachines_bot.runAction(STEAMachines_bot.getDrive().actionBuilder(new Pose2d(60,15, Math.PI))
